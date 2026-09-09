@@ -669,9 +669,10 @@ function applySavingsVisibility(){
   }
 }
 
-// Блокируем случайный скролл страницы на iOS
+// Блокируем случайный скролл страницы на iOS (только не на кнопках и scroll-y)
 document.addEventListener('touchmove', function(e){
-  if(!e.target.closest('.scroll-y')) e.preventDefault();
+  if(e.target.closest('button') || e.target.closest('.scroll-y')) return;
+  e.preventDefault();
 }, {passive:false});
 
 // Позиционируем навбар точно под #phone
