@@ -6,17 +6,14 @@
 <title>ТБанк</title>
 <link rel="manifest" href="manifest.json">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="ТБанк">
 <link rel="apple-touch-icon" href="Proskuryakov_Bank_Taxes-1.png">
 <meta name="theme-color" content="#FFD700">
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f9fafb;}
-  #phone{width:100vw;height:100vh;max-width:430px;}
-  @media all and (display-mode: standalone){
-    #phone{padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom);}
-  }
+  #phone{width:100vw;height:100vh;max-width:430px;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom);box-sizing:border-box;}
   .privacy-blur #app{filter:blur(24px);transition:filter .25s;}
   #app{filter:blur(0);transition:filter .25s;}
   .scroll-y{overflow-y:auto;-ms-overflow-style:none;scrollbar-width:none;}
@@ -64,7 +61,7 @@
       <div class="px-5 pt-2 pb-3 flex items-center justify-between">
         <div>
           <p class="text-xs text-gray-400" data-i18n="hello">Добрый день,</p>
-          <p class="font-semibold text-gray-900">Максим Проскуряков</p>
+          <p class="font-semibold text-gray-900" data-i18n="userName">Максим Проскуряков</p>
         </div>
         <div class="flex gap-1 bg-gray-200 rounded-full p-1">
           <button data-lang="ru" class="lang-btn px-2.5 py-1 text-xs rounded-full font-medium">RU</button>
@@ -218,7 +215,7 @@
         <div class="bg-white rounded-2xl p-4 shadow-sm flex items-center gap-3">
           <span class="w-12 h-12 rounded-full bg-gray-900 text-white flex items-center justify-center font-semibold">МП</span>
           <div>
-            <p class="font-semibold text-gray-900">Максим Проскуряков</p>
+            <p class="font-semibold text-gray-900" data-i18n="userName">Максим Проскуряков</p>
             <p class="text-xs text-gray-400">+7 9** *** **21</p>
           </div>
         </div>
@@ -298,7 +295,7 @@ const T = {
     moveToCard:"Перевести на карту", claimed:"Получено ✓",
     profileTitle:"Профиль", profileSalary:"Зарплата (посл.)", profileTotal:"Общий баланс",
     profileSoon:"Вход по логину и паролю, а также настройка ФИО, зарплаты и баланса появятся в следующей версии.",
-    interestTx:"Проценты по сберсчёту",
+    interestTx:"Проценты по сберсчёту", userName:"Максим Проскуряков",
     stBank:"ТБанк",stClient:"Клиент: Максим Проскуряков",stAccount:"Счёт: 40817810163810457383",stPeriod:"Период",stOper:"Операции",stTotal:"Итого расходов",stDate:"Дата формирования",stPrint:"Печать"},
   en:{hello:"Good afternoon,",balance:"Card balance",validThru:"thru 09/29",transfer:"Transfer",topup:"Top up",statement:"Statement",
     creditTitle:"0% Credit Line",creditDesc:"First payment in 3 months",investTitle:"Investments",investDesc:"Up to 14% annual return",
@@ -313,7 +310,7 @@ const T = {
     moveToCard:"Move to card", claimed:"Received ✓",
     profileTitle:"Profile", profileSalary:"Salary (latest)", profileTotal:"Total balance",
     profileSoon:"Login/password sign-in and profile setup (name, salary, balance) are coming in the next version.",
-    interestTx:"Savings interest",
+    interestTx:"Savings interest", userName:"Maxim Proskuryakov",
     stBank:"ТБанк",stClient:"Client: Maxim Proskuryakov",stAccount:"Account: 40817810163810457383",stPeriod:"Period",stOper:"Transactions",stTotal:"Total spent",stDate:"Generated on",stPrint:"Print"},
 };
 let lang = 'ru';
