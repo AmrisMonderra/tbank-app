@@ -77,7 +77,7 @@
                 <p class="text-sm text-emerald-600 font-semibold">+9.2%</p>
                 <p class="text-[11px] text-gray-400" data-i18n="perYear">годовых</p>
               </div>
-              <button id="toggleSavings" onclick="toggleSavingsVisibility()" class="text-gray-400 text-lg active:scale-90 transition">👁</button>
+              <button id="toggleSavings" class="text-gray-400 text-lg p-2 active:scale-90 transition">👁</button>
             </div>
           </div>
         </div>
@@ -642,6 +642,11 @@ allTx = TXS_RAW.map(r=>({
 renderAll();
 renderBannerDots();
 applySavingsVisibility();
+document.getElementById('toggleSavings').addEventListener('touchend', function(e){
+  e.preventDefault();
+  toggleSavingsVisibility();
+});
+document.getElementById('toggleSavings').addEventListener('click', toggleSavingsVisibility);
 setInterval(renderClock, 30000);
 
 // Скрыть/показать накопительный счёт
