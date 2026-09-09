@@ -582,15 +582,56 @@ document.getElementById('btnClaimInterest').addEventListener('click', ()=>{
   renderBalance(); renderTx(); renderHistory();
 });
 
-// FaceID intro
-setTimeout(()=>{
+// FaceID / WebAuthn
+async function unlockApp(){
   document.getElementById('faceidText').textContent = '✓';
   document.getElementById('faceid').classList.add('opacity-0');
   document.getElementById('faceid').style.transition = 'opacity .4s';
   document.getElementById('app').classList.remove('opacity-0');
   document.getElementById('app').classList.add('fade-in');
   setTimeout(()=> document.getElementById('faceid').remove(), 450);
-}, 2000);
+}
+
+async function startFaceID(){
+  // Если WebAuthn не поддерживается — просто открываем
+  if(!window.PublicKeyCredential){ unlockApp(); return; }
+
+  const LS_KEY = 'tbank_cred_id';
+  const stored = localStorage.getItem(LS_KEY);
+
+  try {
+    if(!stored){
+      // Первый запуск — регистрируем биометрию
+      const reg = await navigator.credentials.create({ publicKey:{
+        challenge: crypto.getRandomValues(new Uint8Array(32)),
+        rp:{ name:'ТБанк', id: location.hostname },
+        user:{ id: new Uint8Array(16), name:'user', displayName:'Максим Проскуряков' },
+        pubKeyCredParams:[{type:'public-key',alg:-7},{type:'public-key',alg:-257}],
+        authenticatorSelection:{ authenticatorAttachment:'platform', userVerification:'required' },
+        timeout: 60000
+      }});
+      localStorage.setItem(LS_KEY, btoa(String.fromCharCode(...new Uint8Array(reg.rawId))));
+      unlockApp();
+    } else {
+      // Последующие запуски — верификация (Face ID)
+      const rawId = Uint8Array.from(atob(stored), c=>c.charCodeAt(0));
+      await navigator.credentials.get({ publicKey:{
+        challenge: crypto.getRandomValues(new Uint8Array(32)),
+        allowCredentials:[{ type:'public-key', id: rawId }],
+        userVerification:'required',
+        timeout: 60000
+      }});
+      unlockApp();
+    }
+  } catch(e){
+    // Отмена или ошибка — показываем кнопку ручного входа
+    document.getElementById('faceidText').textContent = 'Нажмите для входа';
+    document.getElementById('faceid').style.cursor = 'pointer';
+    document.getElementById('faceid').onclick = startFaceID;
+  }
+}
+
+startFaceID();
 
 // Privacy blur on focus loss
 function setBlur(on){ document.body.classList.toggle('privacy-blur', on); }
