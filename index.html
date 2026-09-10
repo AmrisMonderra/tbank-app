@@ -182,7 +182,7 @@
             <p class="text-sm font-semibold text-gray-800" data-i18n="rates">Курсы валют</p>
             <p id="ratesDate" class="text-[11px] text-gray-400"></p>
           </div>
-          <div id="ratesRow" class="grid grid-cols-4 gap-1.5"></div>
+          <div id="ratesRow" class="flex gap-2 overflow-x-auto scroll-y pb-1 -mx-5 px-5"></div>
         </div>
 
         <!-- Expenses -->
@@ -643,7 +643,13 @@ let balance = 3299170.38;
 
 const rates = [
   {code:'USD', flag:'🇺🇸', sell:485.20},
-  {code:'EUR', flag:'🇪🇺', sell:527.40}
+  {code:'EUR', flag:'🇪🇺', sell:527.40},
+  {code:'GBP', flag:'🇬🇧', sell:621.80},
+  {code:'CHF', flag:'🇨🇭', sell:556.30},
+  {code:'CNY', flag:'🇨🇳', sell:66.74},
+  {code:'JPY', flag:'🇯🇵', sell:3.19},
+  {code:'AED', flag:'🇦🇪', sell:132.10},
+  {code:'TRY', flag:'🇹🇷', sell:13.85}
 ];
 
 function t(key){ return T[lang][key] || key; }
@@ -683,9 +689,10 @@ function renderBalance(){
 function renderRates(){
   const row = document.getElementById('ratesRow');
   row.innerHTML = rates.map(r=>`
-    <div class="bg-white rounded-xl px-1.5 py-2 shadow-sm text-center">
-      <p class="text-[11px] font-semibold text-gray-800">${r.flag} ${r.code}</p>
-      <p class="text-[11px] text-gray-500">${r.sell.toFixed(2)}</p>
+    <div class="shrink-0 bg-white rounded-xl px-3 py-2.5 shadow-sm text-center min-w-[68px]">
+      <p class="text-base leading-none mb-1">${r.flag}</p>
+      <p class="text-[11px] font-semibold text-gray-800">${r.code}</p>
+      <p class="text-[11px] text-gray-500 mt-0.5">${r.sell.toFixed(2)} ₽</p>
     </div>`).join('');
   document.getElementById('ratesDate').textContent = todayStr();
 }
