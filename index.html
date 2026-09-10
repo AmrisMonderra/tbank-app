@@ -48,7 +48,7 @@
       </div>
 
       <div class="flex-1 relative">
-      <div id="page-home" class="absolute inset-0 scroll-y px-5 pb-4 space-y-5">
+      <div id="page-home" class="absolute inset-0 scroll-y px-5 pb-24 space-y-5">
 
         <!-- Balance Card -->
         <div class="card-grad rounded-3xl p-5 text-white shadow-lg">
@@ -111,8 +111,69 @@
                 <span class="text-2xl opacity-80">🛍️</span>
               </div>
             </div>
+            <div class="snap-start min-w-full px-5 shrink-0">
+              <div class="bg-[#e8f0fe] rounded-2xl p-4 text-blue-900 flex items-center justify-between">
+                <div>
+                  <p class="font-semibold text-sm" data-i18n="insureTitle">Страхование путешествий</p>
+                  <p class="text-xs text-blue-700 mt-1" data-i18n="insureDesc">Оформите за 2 минуты от 590 ₽</p>
+                </div>
+                <span class="text-2xl opacity-80">✈️</span>
+              </div>
+            </div>
+            <div class="snap-start min-w-full px-5 shrink-0">
+              <div class="bg-[#f3e8ff] rounded-2xl p-4 text-purple-900 flex items-center justify-between">
+                <div>
+                  <p class="font-semibold text-sm" data-i18n="premiumTitle">Премиум-подписка</p>
+                  <p class="text-xs text-purple-700 mt-1" data-i18n="premiumDesc">Повышенный кэшбэк и приоритетная поддержка</p>
+                </div>
+                <span class="text-2xl opacity-80">⭐</span>
+              </div>
+            </div>
           </div>
           <div id="bannerDots" class="flex justify-center gap-1.5 mt-2"></div>
+        </div>
+
+        <!-- Для вас -->
+        <div>
+          <p class="text-sm font-semibold text-gray-800 mb-3" data-i18n="forYou">Для вас</p>
+          <div class="flex gap-3 overflow-x-auto scroll-y -mx-5 px-5 pb-1">
+
+            <div class="shrink-0 w-40 bg-white rounded-2xl p-3.5 shadow-sm flex flex-col gap-2">
+              <div class="w-9 h-9 rounded-xl bg-emerald-50 flex items-center justify-center text-lg">💰</div>
+              <p class="text-xs font-semibold text-gray-800 leading-tight" data-i18n="offerSavings">Накопительный счёт 13%</p>
+              <p class="text-[10px] text-gray-400 leading-tight" data-i18n="offerSavingsDesc">Доход каждый день на остаток</p>
+              <button class="mt-auto text-[11px] font-semibold text-emerald-600 text-left" data-i18n="offerOpen">Открыть →</button>
+            </div>
+
+            <div class="shrink-0 w-40 bg-white rounded-2xl p-3.5 shadow-sm flex flex-col gap-2">
+              <div class="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center text-lg">🏠</div>
+              <p class="text-xs font-semibold text-gray-800 leading-tight" data-i18n="offerMortgage">Ипотека от 8,9%</p>
+              <p class="text-[10px] text-gray-400 leading-tight" data-i18n="offerMortgageDesc">Одобрение за 2 минуты онлайн</p>
+              <button class="mt-auto text-[11px] font-semibold text-blue-600 text-left" data-i18n="offerLearn">Узнать →</button>
+            </div>
+
+            <div class="shrink-0 w-40 bg-white rounded-2xl p-3.5 shadow-sm flex flex-col gap-2">
+              <div class="w-9 h-9 rounded-xl bg-amber-50 flex items-center justify-center text-lg">🚗</div>
+              <p class="text-xs font-semibold text-gray-800 leading-tight" data-i18n="offerAuto">Автокредит 0%</p>
+              <p class="text-[10px] text-gray-400 leading-tight" data-i18n="offerAutoDesc">Первый взнос от 10%</p>
+              <button class="mt-auto text-[11px] font-semibold text-amber-600 text-left" data-i18n="offerLearn">Узнать →</button>
+            </div>
+
+            <div class="shrink-0 w-40 bg-white rounded-2xl p-3.5 shadow-sm flex flex-col gap-2">
+              <div class="w-9 h-9 rounded-xl bg-rose-50 flex items-center justify-center text-lg">❤️</div>
+              <p class="text-xs font-semibold text-gray-800 leading-tight" data-i18n="offerInsure">Страхование жизни</p>
+              <p class="text-[10px] text-gray-400 leading-tight" data-i18n="offerInsureDesc">От 199 ₽ в месяц</p>
+              <button class="mt-auto text-[11px] font-semibold text-rose-500 text-left" data-i18n="offerOpen">Открыть →</button>
+            </div>
+
+            <div class="shrink-0 w-40 bg-white rounded-2xl p-3.5 shadow-sm flex flex-col gap-2">
+              <div class="w-9 h-9 rounded-xl bg-violet-50 flex items-center justify-center text-lg">📱</div>
+              <p class="text-xs font-semibold text-gray-800 leading-tight" data-i18n="offerSub">Подписка Прайм</p>
+              <p class="text-[10px] text-gray-400 leading-tight" data-i18n="offerSubDesc">Музыка, кино, доставка</p>
+              <button class="mt-auto text-[11px] font-semibold text-violet-600 text-left" data-i18n="offerConnect">Подключить →</button>
+            </div>
+
+          </div>
         </div>
 
         <!-- Currency Rates -->
@@ -243,7 +304,16 @@ const T = {
     profileTitle:"Профиль", profileSalary:"Зарплата (посл.)", profileTotal:"Общий баланс",
     profileSoon:"Вход по логину и паролю, а также настройка ФИО, зарплаты и баланса появятся в следующей версии.",
     interestTx:"Проценты по сберсчёту", userName:"Максим Проскуряков",
-    stBank:"ТБанк",stClient:"Клиент: Максим Проскуряков",stAccount:"Счёт: 40817810163810457383",stPeriod:"Период",stOper:"Операции",stTotal:"Итого расходов",stDate:"Дата формирования",stPrint:"Печать"},
+    stBank:"ТБанк",stClient:"Клиент: Максим Проскуряков",stAccount:"Счёт: 40817810163810457383",stPeriod:"Период",stOper:"Операции",stTotal:"Итого расходов",stDate:"Дата формирования",stPrint:"Печать",
+    forYou:"Для вас",
+    insureTitle:"Страхование путешествий",insureDesc:"Оформите за 2 минуты от 590 ₽",
+    premiumTitle:"Премиум-подписка",premiumDesc:"Повышенный кэшбэк и приоритетная поддержка",
+    offerSavings:"Накопительный счёт 13%",offerSavingsDesc:"Доход каждый день на остаток",
+    offerMortgage:"Ипотека от 8,9%",offerMortgageDesc:"Одобрение за 2 минуты онлайн",
+    offerAuto:"Автокредит 0%",offerAutoDesc:"Первый взнос от 10%",
+    offerInsure:"Страхование жизни",offerInsureDesc:"От 199 ₽ в месяц",
+    offerSub:"Подписка Прайм",offerSubDesc:"Музыка, кино, доставка",
+    offerOpen:"Открыть →",offerLearn:"Узнать →",offerConnect:"Подключить →"},
   en:{hello:"Good afternoon,",balance:"Card balance",validThru:"thru 09/29",transfer:"Transfer",topup:"Top up",statement:"Statement",
     creditTitle:"0% Credit Line",creditDesc:"First payment in 3 months",investTitle:"Investments",investDesc:"Up to 14% annual return",
     rates:"Exchange rates",expenses:"Recent transactions",today:"Today",yesterday:"Yesterday",daysAgo:"days ago",
@@ -258,11 +328,18 @@ const T = {
     profileTitle:"Profile", profileSalary:"Salary (latest)", profileTotal:"Total balance",
     profileSoon:"Login/password sign-in and profile setup (name, salary, balance) are coming in the next version.",
     interestTx:"Savings interest", userName:"Maxim Proskuryakov",
-    stBank:"ТБанк",stClient:"Client: Maxim Proskuryakov",stAccount:"Account: 40817810163810457383",stPeriod:"Period",stOper:"Transactions",stTotal:"Total spent",stDate:"Generated on",stPrint:"Print"},
+    stBank:"ТБанк",stClient:"Client: Maxim Proskuryakov",stAccount:"Account: 40817810163810457383",stPeriod:"Period",stOper:"Transactions",stTotal:"Total spent",stDate:"Generated on",stPrint:"Print",
+    forYou:"For you",
+    insureTitle:"Travel insurance",insureDesc:"Apply in 2 minutes from 590 ₽",
+    premiumTitle:"Premium subscription",premiumDesc:"Higher cashback and priority support",
+    offerSavings:"Savings 13% p.a.",offerSavingsDesc:"Daily interest on balance",
+    offerMortgage:"Mortgage from 8.9%",offerMortgageDesc:"Approval in 2 minutes online",
+    offerAuto:"Auto loan 0%",offerAutoDesc:"Down payment from 10%",
+    offerInsure:"Life insurance",offerInsureDesc:"From 199 ₽ per month",
+    offerSub:"Prime subscription",offerSubDesc:"Music, movies, delivery",
+    offerOpen:"Open →",offerLearn:"Learn →",offerConnect:"Connect →"},
 };
 let lang = 'ru';
-
-const SAVINGS_RATE = 0.092;
 
 // Вычислить daysAgo из строки DD.MM.YYYY
 function dateToAgo(ds){
@@ -373,10 +450,8 @@ const TXS_RAW = [
 ];
 
 // Баланс: 2 969 499,38 ₽ по выписке на 18.08 + net после выписки = 3 299 170,38 ₽
-let savingsBalance = 5000000;
 let allTx = [];
 let balance = 3299170.38;
-let interestClaimed = false;
 
 const rates = [
   {code:'USD', flag:'🇺🇸', sell:485.20},
@@ -408,23 +483,13 @@ function renderStatic(){
 
 function renderBalance(){
   document.querySelectorAll('.js-balance').forEach(el=> el.textContent = fmtMoney(balance));
-  document.querySelectorAll('.js-savings').forEach(el=> el.textContent = fmtMoney(savingsBalance));
-  const interest = Math.round(savingsBalance * SAVINGS_RATE/12);
-  const interestEl = document.getElementById('interestText');
-  const btn = document.getElementById('btnClaimInterest');
-  if(interestEl) interestEl.textContent = fmtMoney(interest);
-  if(btn){
-    btn.disabled = interestClaimed;
-    btn.textContent = interestClaimed ? t('claimed') : t('moveToCard');
-    btn.classList.toggle('opacity-40', interestClaimed);
-  }
   const pSalary = document.getElementById('profileSalary');
   const pTotal = document.getElementById('profileTotal');
   if(pSalary){
     const lastSalary = allTx.find(tx=>tx.letter==='💼');
     pSalary.textContent = lastSalary ? fmtMoney(lastSalary.amount) : '—';
   }
-  if(pTotal) pTotal.textContent = fmtMoney(balance + savingsBalance);
+  if(pTotal) pTotal.textContent = fmtMoney(balance);
 }
 
 function renderRates(){
@@ -515,15 +580,6 @@ document.querySelectorAll('.nav-item').forEach(btn=>{
   });
 });
 
-// Перевод процентов со сберсчёта на карту (вручную, раз в месяц)
-document.getElementById('btnClaimInterest').addEventListener('click', ()=>{
-  if(interestClaimed) return;
-  const interest = Math.round(savingsBalance * SAVINGS_RATE/12);
-  balance += interest;
-  interestClaimed = true;
-  allTx.unshift({letter:'%', color:'bg-emerald-50 text-emerald-600', name:{ru:T.ru.interestTx,en:T.en.interestTx,kz:T.kz.interestTx}, sub:null, amount:interest, daysAgo:0, justNow:true});
-  renderBalance(); renderTx(); renderHistory();
-});
 
 // Privacy blur on focus loss
 function setBlur(on){ document.body.classList.toggle('privacy-blur', on); }
@@ -603,33 +659,7 @@ allTx = TXS_RAW.map(r=>({
 })).sort((a,b)=>a.daysAgo-b.daysAgo);
 renderAll();
 renderBannerDots();
-applySavingsVisibility();
-document.getElementById('toggleSavings').addEventListener('touchend', function(e){
-  e.preventDefault();
-  toggleSavingsVisibility();
-});
-document.getElementById('toggleSavings').addEventListener('click', toggleSavingsVisibility);
 setInterval(renderClock, 30000);
-
-// Скрыть/показать накопительный счёт
-let savingsHidden = localStorage.getItem('savingsHidden') === '1';
-function toggleSavingsVisibility(){
-  savingsHidden = !savingsHidden;
-  localStorage.setItem('savingsHidden', savingsHidden ? '1' : '0');
-  applySavingsVisibility();
-}
-function applySavingsVisibility(){
-  const el = document.getElementById('savingsAmount');
-  const btn = document.getElementById('toggleSavings');
-  if(!el) return;
-  if(savingsHidden){
-    el.textContent = '•••• ₽';
-    if(btn) btn.textContent = '🙈';
-  } else {
-    renderBalance();
-    if(btn) btn.textContent = '👁';
-  }
-}
 
 // Блокируем случайный скролл страницы на iOS (только не на кнопках и scroll-y)
 document.addEventListener('touchmove', function(e){
@@ -648,6 +678,7 @@ function positionNav(){
 }
 positionNav();
 window.addEventListener('resize', positionNav);
+window.addEventListener('load', positionNav);
 </script>
 </body>
 </html>
