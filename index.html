@@ -786,6 +786,8 @@ document.getElementById('cardBtn').addEventListener('click', ()=>{
   cardModal.classList.remove('hidden');
 });
 document.getElementById('cardModalClose').addEventListener('click', ()=> cardModal.classList.add('hidden'));
+document.getElementById('cardModalClose').addEventListener('touchend', (e)=>{ e.preventDefault(); cardModal.classList.add('hidden'); });
+cardModal.addEventListener('click', (e)=>{ if(e.target===cardModal) cardModal.classList.add('hidden'); });
 document.getElementById('toggleCvv').addEventListener('click', ()=>{
   cvvVisible = !cvvVisible;
   document.getElementById('cvvValue').textContent = cvvVisible ? '412' : '•••';
