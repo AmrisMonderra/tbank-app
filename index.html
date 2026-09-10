@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="ТБанк">
-<link rel="apple-touch-icon" href="Proskuryakov_Bank_Taxes-1.png">
+<link rel="apple-touch-icon" href="icon.svg">
 <meta name="theme-color" content="#FFD700">
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
@@ -200,37 +200,197 @@
       </div>
 
       <!-- Карты -->
-      <div id="page-cards" class="absolute inset-0 scroll-y px-5 pb-4 space-y-5 hidden">
+      <div id="page-cards" class="absolute inset-0 scroll-y px-5 pb-24 space-y-5 hidden">
         <p class="text-sm font-semibold text-gray-800 pt-1" data-i18n="myCards">Мои карты и счета</p>
-        <div class="card-grad rounded-3xl p-5 text-white shadow-lg">
-          <div class="flex justify-between items-start">
-            <div>
-              <p class="text-xs text-gray-300" data-i18n="balance">Баланс карты</p>
-              <p class="js-balance text-3xl font-semibold mt-1 tracking-tight">0 ₸</p>
+
+        <!-- Карта — кликабельная -->
+        <button id="cardBtn" class="w-full text-left">
+          <div class="card-grad rounded-3xl p-5 text-white shadow-lg active:scale-95 transition">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="text-xs text-gray-300" data-i18n="balance">Баланс карты</p>
+                <p class="js-balance text-3xl font-semibold mt-1 tracking-tight">0 ₽</p>
+              </div>
+              <span class="text-xs bg-white/15 px-2 py-1 rounded-lg">Visa Platinum</span>
             </div>
-            <span class="text-xs bg-white/15 px-2 py-1 rounded-lg">Visa Platinum</span>
+            <div class="flex justify-between items-end mt-6">
+              <p class="text-sm text-gray-300 tracking-widest">•••• 9921</p>
+              <p class="text-xs text-gray-400" data-i18n="validThru">до 09/29</p>
+            </div>
+            <p class="text-[10px] text-gray-400 mt-3" data-i18n="tapDetails">Нажмите для просмотра реквизитов</p>
           </div>
-          <div class="flex justify-between items-end mt-6">
-            <p class="text-sm text-gray-300 tracking-widest">•••• 9921</p>
-            <p class="text-xs text-gray-400" data-i18n="validThru">до 09/29</p>
+        </button>
+
+        <!-- Быстрые действия карты -->
+        <div class="grid grid-cols-4 gap-2 text-center">
+          <div class="bg-white rounded-2xl py-3 shadow-sm flex flex-col items-center gap-1">
+            <span class="text-xl">🔒</span>
+            <span class="text-[10px] text-gray-600" data-i18n="cardBlock">Заблокировать</span>
           </div>
+          <div class="bg-white rounded-2xl py-3 shadow-sm flex flex-col items-center gap-1">
+            <span class="text-xl">💳</span>
+            <span class="text-[10px] text-gray-600" data-i18n="cardLimit">Лимиты</span>
+          </div>
+          <div class="bg-white rounded-2xl py-3 shadow-sm flex flex-col items-center gap-1">
+            <span class="text-xl">📍</span>
+            <span class="text-[10px] text-gray-600" data-i18n="cardGeo">Геолокация</span>
+          </div>
+          <div class="bg-white rounded-2xl py-3 shadow-sm flex flex-col items-center gap-1">
+            <span class="text-xl">⚙️</span>
+            <span class="text-[10px] text-gray-600" data-i18n="cardSettings">Настройки</span>
+          </div>
+        </div>
+
+        <!-- Нет депозитов -->
+        <div>
+          <p class="text-sm font-semibold text-gray-800 mb-2" data-i18n="deposits">Депозиты</p>
+          <div class="bg-white rounded-2xl p-4 shadow-sm flex items-center justify-between">
+            <div>
+              <p class="text-sm text-gray-400" data-i18n="noDeposits">Депозитов нет</p>
+              <p class="text-[11px] text-gray-300 mt-0.5" data-i18n="noDepositsDesc">Откройте первый с доходом до 13%</p>
+            </div>
+            <button class="text-xs font-semibold text-emerald-600 shrink-0 ml-2" data-i18n="openDeposit">Открыть</button>
+          </div>
+        </div>
+
+        <!-- Нет кредитов -->
+        <div>
+          <p class="text-sm font-semibold text-gray-800 mb-2" data-i18n="credits">Кредиты</p>
+          <div class="bg-white rounded-2xl p-4 shadow-sm flex items-center justify-between">
+            <div>
+              <p class="text-sm text-gray-400" data-i18n="noCredits">Кредитов нет</p>
+              <p class="text-[11px] text-gray-300 mt-0.5" data-i18n="noCreditsDesc">Получите до 5 000 000 ₽ за 2 минуты</p>
+            </div>
+            <button class="text-xs font-semibold text-blue-600 shrink-0 ml-2" data-i18n="getCredit">Оформить</button>
+          </div>
+        </div>
+
+        <!-- Нет рассрочки -->
+        <div>
+          <p class="text-sm font-semibold text-gray-800 mb-2" data-i18n="installment">Рассрочка</p>
+          <div class="bg-white rounded-2xl p-4 shadow-sm flex items-center justify-between">
+            <div>
+              <p class="text-sm text-gray-400" data-i18n="noInstallment">Рассрочек нет</p>
+              <p class="text-[11px] text-gray-300 mt-0.5" data-i18n="noInstallmentDesc">Покупайте сейчас, платите потом без %</p>
+            </div>
+            <button class="text-xs font-semibold text-violet-600 shrink-0 ml-2" data-i18n="getInstallment">Узнать</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Модал реквизитов карты -->
+      <div id="cardModal" class="hidden absolute inset-0 z-40 bg-black/50 flex items-end">
+        <div class="modal-enter bg-white w-full rounded-t-3xl p-5 pb-8">
+          <div class="w-10 h-1.5 bg-gray-300 rounded-full mx-auto mb-5"></div>
+          <p class="font-semibold text-gray-900 mb-4" data-i18n="cardDetails">Реквизиты карты</p>
+          <div class="card-grad rounded-2xl p-4 text-white mb-5">
+            <p class="text-xs text-gray-400 mb-1">Visa Platinum</p>
+            <p class="text-lg tracking-widest font-medium">4276 3800 •••• 9921</p>
+            <div class="flex gap-6 mt-3">
+              <div><p class="text-[10px] text-gray-400" data-i18n="expiry">Срок</p><p class="text-sm font-medium">09/29</p></div>
+              <div><p class="text-[10px] text-gray-400">CVV</p><p class="text-sm font-medium" id="cvvValue">•••</p></div>
+              <button id="toggleCvv" class="mt-auto text-[11px] text-gray-300 underline" data-i18n="show">Показать</button>
+            </div>
+          </div>
+          <div class="bg-gray-50 rounded-2xl divide-y divide-gray-100 text-sm mb-4">
+            <div class="flex justify-between px-4 py-3">
+              <span class="text-gray-400" data-i18n="cardHolder">Держатель</span>
+              <span class="font-medium text-gray-900" data-i18n="cardHolderName">MAXIM PROSKURYAKOV</span>
+            </div>
+            <div class="flex justify-between px-4 py-3">
+              <span class="text-gray-400" data-i18n="bankBik">БИК банка</span>
+              <span class="font-medium text-gray-900">044525974</span>
+            </div>
+            <div class="flex justify-between px-4 py-3">
+              <span class="text-gray-400" data-i18n="corrAccount">Корр. счёт</span>
+              <span class="font-medium text-gray-900 text-xs">30101810145250000974</span>
+            </div>
+            <div class="flex justify-between px-4 py-3">
+              <span class="text-gray-400" data-i18n="checkAccount">Расч. счёт</span>
+              <span class="font-medium text-gray-900 text-xs">40817810163810457383</span>
+            </div>
+          </div>
+          <button id="cardModalClose" class="w-full py-3 rounded-2xl bg-gray-100 text-gray-700 text-sm font-medium" data-i18n="close">Закрыть</button>
         </div>
       </div>
 
       <!-- Профиль -->
-      <div id="page-profile" class="absolute inset-0 scroll-y px-5 pb-4 space-y-4 hidden">
+      <div id="page-profile" class="absolute inset-0 scroll-y px-5 pb-24 space-y-4 hidden">
         <p class="text-sm font-semibold text-gray-800 pt-1" data-i18n="profileTitle">Профиль</p>
+
+        <!-- Аватар -->
         <div class="bg-white rounded-2xl p-4 shadow-sm flex items-center gap-3">
-          <span class="w-12 h-12 rounded-full bg-gray-900 text-white flex items-center justify-center font-semibold">МП</span>
-          <div>
+          <span class="w-12 h-12 rounded-full bg-gray-900 text-white flex items-center justify-center font-semibold text-lg">МП</span>
+          <div class="flex-1">
             <p class="font-semibold text-gray-900" data-i18n="userName">Максим Проскуряков</p>
             <p class="text-xs text-gray-400">+7 9** *** **21</p>
           </div>
+          <span class="text-xs bg-amber-100 text-amber-700 px-2 py-1 rounded-lg font-medium" data-i18n="statusPrime">Прайм</span>
         </div>
+
+        <!-- Финансы -->
         <div class="bg-white rounded-2xl divide-y divide-gray-100 shadow-sm text-sm">
-          <div class="flex justify-between px-4 py-3"><span class="text-gray-400" data-i18n="profileSalary">Зарплата (посл.)</span><span id="profileSalary" class="font-medium text-gray-900">0 ₸</span></div>
-          <div class="flex justify-between px-4 py-3"><span class="text-gray-400" data-i18n="profileTotal">Общий баланс</span><span id="profileTotal" class="font-medium text-gray-900">0 ₸</span></div>
+          <div class="flex justify-between px-4 py-3"><span class="text-gray-400" data-i18n="profileSalary">Зарплата (посл.)</span><span id="profileSalary" class="font-medium text-gray-900">—</span></div>
+          <div class="flex justify-between px-4 py-3"><span class="text-gray-400" data-i18n="profileTotal">Баланс карты</span><span id="profileTotal" class="font-medium text-gray-900">—</span></div>
+          <div class="flex justify-between px-4 py-3"><span class="text-gray-400" data-i18n="profileCashback">Кэшбэк за месяц</span><span class="font-medium text-emerald-600">+1 240 ₽</span></div>
         </div>
+
+        <!-- Баннер Прайм -->
+        <div class="bg-gradient-to-r from-amber-400 to-orange-400 rounded-2xl p-4 text-white flex items-center justify-between">
+          <div>
+            <p class="font-semibold text-sm" data-i18n="primeTitle">Подписка Прайм активна</p>
+            <p class="text-xs text-white/80 mt-0.5" data-i18n="primeDesc">Повышенный кэшбэк и бесплатные переводы</p>
+          </div>
+          <span class="text-2xl">⭐</span>
+        </div>
+
+        <!-- Настройки -->
+        <div>
+          <p class="text-sm font-semibold text-gray-800 mb-2" data-i18n="settingsTitle">Настройки</p>
+          <div class="bg-white rounded-2xl divide-y divide-gray-100 shadow-sm text-sm">
+            <div class="flex justify-between items-center px-4 py-3"><span class="text-gray-700" data-i18n="settingsNotify">Уведомления</span><span class="text-gray-300">›</span></div>
+            <div class="flex justify-between items-center px-4 py-3"><span class="text-gray-700" data-i18n="settingsSecurity">Безопасность</span><span class="text-gray-300">›</span></div>
+            <div class="flex justify-between items-center px-4 py-3"><span class="text-gray-700" data-i18n="settingsTheme">Тема оформления</span><span class="text-gray-300">›</span></div>
+            <div class="flex justify-between items-center px-4 py-3"><span class="text-gray-700" data-i18n="settingsLang">Язык приложения</span><span class="text-gray-300">›</span></div>
+          </div>
+        </div>
+
+        <!-- Контакты банка -->
+        <div>
+          <p class="text-sm font-semibold text-gray-800 mb-2" data-i18n="contactsTitle">Контакты</p>
+          <div class="bg-white rounded-2xl divide-y divide-gray-100 shadow-sm text-sm">
+            <div class="flex items-center gap-3 px-4 py-3">
+              <span class="text-lg">📞</span>
+              <div class="flex-1"><p class="text-gray-700" data-i18n="phone24">Горячая линия 24/7</p><p class="text-xs text-gray-400">8 800 555-92-36</p></div>
+              <span class="text-gray-300">›</span>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-3">
+              <span class="text-lg">💬</span>
+              <div class="flex-1"><p class="text-gray-700" data-i18n="chat">Чат с поддержкой</p><p class="text-xs text-gray-400" data-i18n="chatDesc">Обычно отвечают за 2 мин.</p></div>
+              <span class="text-gray-300">›</span>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-3">
+              <span class="text-lg">🏦</span>
+              <div class="flex-1"><p class="text-gray-700" data-i18n="offices">Офисы и банкоматы</p><p class="text-xs text-gray-400" data-i18n="officesDesc">Ближайшие на карте</p></div>
+              <span class="text-gray-300">›</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- О приложении -->
+        <div>
+          <p class="text-sm font-semibold text-gray-800 mb-2" data-i18n="aboutTitle">О приложении</p>
+          <div class="bg-white rounded-2xl divide-y divide-gray-100 shadow-sm text-sm">
+            <div class="flex justify-between px-4 py-3"><span class="text-gray-400" data-i18n="appVersion">Версия</span><span class="text-gray-500">2.14.1</span></div>
+            <div class="flex justify-between px-4 py-3"><span class="text-gray-400" data-i18n="appBuild">Сборка</span><span class="text-gray-500">20260910</span></div>
+            <div class="flex items-center justify-between px-4 py-3"><span class="text-gray-700" data-i18n="privacyPolicy">Политика конфиденциальности</span><span class="text-gray-300">›</span></div>
+            <div class="flex items-center justify-between px-4 py-3"><span class="text-gray-700" data-i18n="termsOfUse">Пользовательское соглашение</span><span class="text-gray-300">›</span></div>
+          </div>
+        </div>
+
+        <button class="w-full py-3 rounded-2xl bg-red-50 text-red-500 text-sm font-medium" data-i18n="logout">Выйти из аккаунта</button>
+
       </div>
       </div>
 
@@ -313,7 +473,21 @@ const T = {
     offerAuto:"Автокредит 0%",offerAutoDesc:"Первый взнос от 10%",
     offerInsure:"Страхование жизни",offerInsureDesc:"От 199 ₽ в месяц",
     offerSub:"Подписка Прайм",offerSubDesc:"Музыка, кино, доставка",
-    offerOpen:"Открыть →",offerLearn:"Узнать →",offerConnect:"Подключить →"},
+    offerOpen:"Открыть →",offerLearn:"Узнать →",offerConnect:"Подключить →",
+    tapDetails:"Нажмите для просмотра реквизитов",
+    cardBlock:"Заблокировать",cardLimit:"Лимиты",cardGeo:"Геолокация",cardSettings:"Настройки",
+    deposits:"Депозиты",noDeposits:"Депозитов нет",noDepositsDesc:"Откройте первый с доходом до 13%",openDeposit:"Открыть",
+    credits:"Кредиты",noCredits:"Кредитов нет",noCreditsDesc:"Получите до 5 000 000 ₽ за 2 минуты",getCredit:"Оформить",
+    installment:"Рассрочка",noInstallment:"Рассрочек нет",noInstallmentDesc:"Покупайте сейчас, платите потом без %",getInstallment:"Узнать",
+    cardDetails:"Реквизиты карты",expiry:"Срок",show:"Показать",hide:"Скрыть",
+    cardHolder:"Держатель",cardHolderName:"MAXIM PROSKURYAKOV",bankBik:"БИК банка",corrAccount:"Корр. счёт",checkAccount:"Расч. счёт",close:"Закрыть",
+    statusPrime:"Прайм",profileCashback:"Кэшбэк за месяц",
+    primeTitle:"Подписка Прайм активна",primeDesc:"Повышенный кэшбэк и бесплатные переводы",
+    settingsTitle:"Настройки",settingsNotify:"Уведомления",settingsSecurity:"Безопасность",settingsTheme:"Тема оформления",settingsLang:"Язык приложения",
+    contactsTitle:"Контакты",phone24:"Горячая линия 24/7",chat:"Чат с поддержкой",chatDesc:"Обычно отвечают за 2 мин.",
+    offices:"Офисы и банкоматы",officesDesc:"Ближайшие на карте",
+    aboutTitle:"О приложении",appVersion:"Версия",appBuild:"Сборка",privacyPolicy:"Политика конфиденциальности",termsOfUse:"Пользовательское соглашение",
+    logout:"Выйти из аккаунта"},
   en:{hello:"Good afternoon,",balance:"Card balance",validThru:"thru 09/29",transfer:"Transfer",topup:"Top up",statement:"Statement",
     creditTitle:"0% Credit Line",creditDesc:"First payment in 3 months",investTitle:"Investments",investDesc:"Up to 14% annual return",
     rates:"Exchange rates",expenses:"Recent transactions",today:"Today",yesterday:"Yesterday",daysAgo:"days ago",
@@ -337,7 +511,21 @@ const T = {
     offerAuto:"Auto loan 0%",offerAutoDesc:"Down payment from 10%",
     offerInsure:"Life insurance",offerInsureDesc:"From 199 ₽ per month",
     offerSub:"Prime subscription",offerSubDesc:"Music, movies, delivery",
-    offerOpen:"Open →",offerLearn:"Learn →",offerConnect:"Connect →"},
+    offerOpen:"Open →",offerLearn:"Learn →",offerConnect:"Connect →",
+    tapDetails:"Tap to view card details",
+    cardBlock:"Block card",cardLimit:"Limits",cardGeo:"Geo-restrict",cardSettings:"Settings",
+    deposits:"Deposits",noDeposits:"No deposits",noDepositsDesc:"Open your first with up to 13% return",openDeposit:"Open",
+    credits:"Loans",noCredits:"No loans",noCreditsDesc:"Get up to 5,000,000 ₽ in 2 minutes",getCredit:"Apply",
+    installment:"Installments",noInstallment:"No installments",noInstallmentDesc:"Buy now, pay later with 0%",getInstallment:"Learn",
+    cardDetails:"Card details",expiry:"Expires",show:"Show",hide:"Hide",
+    cardHolder:"Cardholder",cardHolderName:"MAXIM PROSKURYAKOV",bankBik:"Bank BIC",corrAccount:"Corr. account",checkAccount:"Account no.",close:"Close",
+    statusPrime:"Prime",profileCashback:"Cashback this month",
+    primeTitle:"Prime subscription active",primeDesc:"Higher cashback and free transfers",
+    settingsTitle:"Settings",settingsNotify:"Notifications",settingsSecurity:"Security",settingsTheme:"Theme",settingsLang:"App language",
+    contactsTitle:"Contacts",phone24:"Hotline 24/7",chat:"Live chat",chatDesc:"Usually replies in 2 min.",
+    offices:"Offices & ATMs",officesDesc:"Nearest on map",
+    aboutTitle:"About",appVersion:"Version",appBuild:"Build",privacyPolicy:"Privacy policy",termsOfUse:"Terms of use",
+    logout:"Sign out"},
 };
 let lang = 'ru';
 
@@ -580,6 +768,22 @@ document.querySelectorAll('.nav-item').forEach(btn=>{
   });
 });
 
+
+// Card modal
+const cardModal = document.getElementById('cardModal');
+let cvvVisible = false;
+document.getElementById('cardBtn').addEventListener('click', ()=>{
+  cvvVisible = false;
+  document.getElementById('cvvValue').textContent = '•••';
+  document.getElementById('toggleCvv').textContent = t('show');
+  cardModal.classList.remove('hidden');
+});
+document.getElementById('cardModalClose').addEventListener('click', ()=> cardModal.classList.add('hidden'));
+document.getElementById('toggleCvv').addEventListener('click', ()=>{
+  cvvVisible = !cvvVisible;
+  document.getElementById('cvvValue').textContent = cvvVisible ? '412' : '•••';
+  document.getElementById('toggleCvv').textContent = cvvVisible ? t('hide') : t('show');
+});
 
 // Privacy blur on focus loss
 function setBlur(on){ document.body.classList.toggle('privacy-blur', on); }
